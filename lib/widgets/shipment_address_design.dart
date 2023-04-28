@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hometodoor_deliverer/assistantMethods/get_current_location.dart';
 
 import '../global/global.dart';
-import '../mainScreens/shipment_screen.dart';
+import '../mainScreens/parcel_picking_screen.dart';
 import '../models/address.dart';
 import '../splashScreen/splash_screen.dart';
 
@@ -31,7 +31,7 @@ class ShipmentAddressDesign extends StatelessWidget
       "address": completeAddress,
     });
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ShipmentScreen(
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ParcelPickingScreen(
       purchaserId: purchaserId,
       purchaserAddress: model!.fullAddress,
       purchaserLat: model!.lat,
@@ -108,7 +108,7 @@ class ShipmentAddressDesign extends StatelessWidget
                 uLocation.getCurrentLocation();
 
                 confirmedParcelShipment(context, orderId!, sellerId!, orderByUser!);
-                //Navigator.push(context, MaterialPageRoute(builder: (context) => const MySplashScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ParcelPickingScreen()));
               },
               child: Container(
                 decoration: const BoxDecoration(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hometodoor_deliverer/mainScreens/parcel_in_progress_screen.dart';
 
 import '../assistantMethods/get_current_location.dart';
 import '../authentication/auth_screen.dart';
@@ -59,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen>
             if(index == 1)
             {
               //Parcels in Progress
+              Navigator.push(context, MaterialPageRoute(builder: (c)=> ParcelInProgressScreen()));
 
             }
             if(index == 2)
