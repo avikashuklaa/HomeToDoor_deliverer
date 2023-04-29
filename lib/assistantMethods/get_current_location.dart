@@ -3,8 +3,7 @@ import 'package:geolocator/geolocator.dart';
 
 import '../global/global.dart';
 
-class UserLocation
-{
+class UserLocation {
   getCurrentLocation() async
   {
     Position newPosition = await Geolocator.getCurrentPosition(
@@ -20,6 +19,8 @@ class UserLocation
 
     Placemark pMark = placeMarks![0];
 
-    completeAddress = '${pMark.subThoroughfare} ${pMark.thoroughfare}, ${pMark.subLocality} ${pMark.locality}, ${pMark.subAdministrativeArea}, ${pMark.administrativeArea} ${pMark.postalCode}, ${pMark.country}';
+    completeAddress = '${pMark.subThoroughfare} ${pMark.thoroughfare}, ${pMark
+        .subLocality} ${pMark.locality}, ${pMark.subAdministrativeArea}, ${pMark
+        .administrativeArea} ${pMark.postalCode}, ${pMark.country}';
   }
 }

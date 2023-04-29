@@ -1,45 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hometodoor_deliverer/assistantMethods/get_current_location.dart';
+import 'package:hometodoor_deliverer/global/global.dart';
 import 'package:hometodoor_deliverer/mainScreens/parcel_delivering_screen.dart';
+import 'package:hometodoor_deliverer/maps/map_utils.dart';
 
-import '../assistantMethods/get_current_location.dart';
-import '../global/global.dart';
-import '../maps/map_utils.dart';
+class ParcelPickingScreen extends StatefulWidget {
 
-// class ShipmentScreen extends StatefulWidget
-// {
-//   String? purchaserId;
-//   String? sellerId;
-//   String? getOrderID;
-//   String? purchaserAddress;
-//   double? purchaserLat;
-//   double? purchaserLng;
-//
-//   ShipmentScreen({
-//     this.purchaserId,
-//     this.sellerId,
-//     this.getOrderID,
-//     this.purchaserAddress,
-//     this.purchaserLat,
-//     this.purchaserLng,
-//   });
-//
-//   @override
-//   _ShipmentScreenState createState() => _ShipmentScreenState();
-// }
-//
-//
-//
-// class _ShipmentScreenState extends State<ShipmentScreen>
-// {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-// }
-
-class ParcelPickingScreen extends StatefulWidget
-{
   String? purchaserId;
   String? sellerId;
   String? getOrderID;
@@ -57,13 +24,11 @@ class ParcelPickingScreen extends StatefulWidget
   });
 
   @override
-  _ParcelPickingScreenState createState() => _ParcelPickingScreenState();
+  State<ParcelPickingScreen> createState() => _ParcelPickingScreenState();
 }
 
+class _ParcelPickingScreenState extends State<ParcelPickingScreen> {
 
-
-class _ParcelPickingScreenState extends State<ParcelPickingScreen>
-{
   double? sellerLat, sellerLng;
 
   getSellerData() async
@@ -107,6 +72,7 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen>
     )));
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,62 +80,51 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen>
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
           Image.asset(
-            "images/confirm1.png",
-            width: 350,
+              "images/confirm1.png",
+              width: 350,
           ),
 
-          const SizedBox(height: 5,),
-
+          SizedBox(height: 5,),
           GestureDetector(
             onTap: ()
             {
-              //show location from rider current location towards seller location
-              MapUtils.lauchMapFromSourceToDestination(position!.latitude, position!.longitude, sellerLat, sellerLng);
+              MapUtils.launchMapFromSourceToDestination(position!.latitude, position!.longitude, sellerLat, sellerLng);
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
                 Image.asset(
-                  'images/restaurant.png',
+                  "images/restaurant.png",
                   width: 50,
                 ),
-
-                const SizedBox(width: 7,),
-
+                SizedBox(width: 7,),
                 Column(
-                  children: const [
+                  children: [
                     SizedBox(height: 12,),
-
                     Text(
-                      "Show chef's location",
-                      style: TextStyle(
+                        "Show chef's location",
+                        style: TextStyle(
                         fontFamily: "Signatra",
-                        fontSize: 18,
+                        fontSize: 20,
                         letterSpacing: 2,
                       ),
                     ),
                   ],
-                ),
-
+                )
               ],
             ),
           ),
-
-          const SizedBox(height: 40,),
-
+          SizedBox(height: 40,),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: InkWell(
                 onTap: ()
                 {
-                  UserLocation uLocation = UserLocation();
+                  UserLocation uLocation=UserLocation();
                   uLocation.getCurrentLocation();
 
-                  //confirmed - that rider has picked parcel from seller
                   confirmParcelHasBeenPicked(
                       widget.getOrderID,
                       widget.sellerId,
@@ -196,7 +151,7 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen>
                   height: 50,
                   child: const Center(
                     child: Text(
-                      "Order has been Picked - Confirmed",
+                      "Order has been picked - confirm",
                       style: TextStyle(color: Colors.white, fontSize: 15.0),
                     ),
                   ),
@@ -210,4 +165,3 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen>
     );
   }
 }
-

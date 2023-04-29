@@ -1,13 +1,10 @@
-
-
-
 import 'package:url_launcher/url_launcher.dart';
 
 class MapUtils
 {
   MapUtils._();
 
-  static void lauchMapFromSourceToDestination(sourceLat, sourceLng, destinationLat, destinationLng) async
+  static void launchMapFromSourceToDestination(sourceLat, sourceLng, destinationLat, destinationLng) async
   {
     String mapOptions =
     [

@@ -54,7 +54,6 @@ seperateItemIDs(){
 
 }
 
-
 seperateOrderItemQuantities(orderIDs){
   List<String> seperateItemQuantityList = [];
   List<String> defaultItemList = [];

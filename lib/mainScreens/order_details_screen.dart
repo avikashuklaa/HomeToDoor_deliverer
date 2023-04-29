@@ -30,8 +30,12 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
   String orderByUser = "";
   String sellerId = "";
 
-  getOrderInfo(){
-    FirebaseFirestore.instance.collection("orders").doc(widget.orderID).get().then((DocumentSnapshot){
+  getOrderInfo()
+  {
+    FirebaseFirestore.instance
+        .collection("orders")
+        .doc(widget.orderID).get().then((DocumentSnapshot)
+    {
       orderStatus = DocumentSnapshot.data()!["status"].toString();
       orderByUser = DocumentSnapshot.data()!["orderBy"].toString();
       sellerId = DocumentSnapshot.data()!["chefUID"].toString();
@@ -40,10 +44,11 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
 
   @override
   void initState() {
-
     super.initState();
+
     getOrderInfo();
   }
+
 
   @override
   Widget build(BuildContext context)
@@ -52,7 +57,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
       body: SingleChildScrollView(
         child: FutureBuilder<DocumentSnapshot>(
           future: FirebaseFirestore.instance
-             .collection("orders")
+              .collection("orders")
               .doc(widget.orderID)
               .get(),
           builder: (c, snapshot)
@@ -100,7 +105,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                             "Order on: " +
                                 DateFormat("dd MMMM, yyyy - hh:mm aa")
                                     .format(DateTime.fromMillisecondsSinceEpoch(int.parse(dataMap["orderTime"]))),
-                            style: const TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontSize: 16, color: Colors.grey),
                           ),
                         ),
                         const Divider(thickness: 1,),
@@ -122,10 +127,10 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen>
                                     model: Address.fromJson(
                                       snapshot.data!.data()! as Map<String, dynamic>
                                     ),
-                                    orderStatus: orderStatus,
-                                    orderId: widget.orderID,
-                                    sellerId: sellerId,
-                                    orderByUser: orderByUser
+                              orderStatus: orderStatus,
+                              orderId: widget.orderID,
+                              sellerId: sellerId,
+                              orderByUser: orderByUser,
                                   )
                                 : Center(child: circularProgress(),);
                           },

@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-
 import '../assistantMethods/assistant_methods.dart';
 import '../global/global.dart';
 import '../widgets/order_card.dart';
 import '../widgets/progress_bar.dart';
 import '../widgets/simple_app_bar.dart';
+
 
 class NewOrdersScreen extends StatefulWidget {
 
@@ -24,7 +24,7 @@ class _NewOrdersScreenState extends State<NewOrdersScreen> {
           appBar: SimpleAppBar(title: "New Orders",),
           body: StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance
-            .collection("orders").where("status", isEqualTo: "normal")
+                .collection("orders").where("status", isEqualTo: "normal")
             .orderBy("orderTime", descending: true).snapshots(),
             builder: (c, snapshot){
               return snapshot.hasData 

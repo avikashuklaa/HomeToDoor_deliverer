@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hometodoor_deliverer/mainScreens/not_yet_delivered_screen.dart';
 import 'package:hometodoor_deliverer/mainScreens/parcel_in_progress_screen.dart';
 
 import '../assistantMethods/get_current_location.dart';
@@ -66,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen>
             if(index == 2)
             {
               //Not Yet Delivered
+              Navigator.push(context, MaterialPageRoute(builder: (c)=> NotYetDeliveredScreen()));
 
             }
             if(index == 3)
@@ -122,6 +125,30 @@ class _HomeScreenState extends State<HomeScreen>
 
     UserLocation uLocation = UserLocation();
     uLocation.getCurrentLocation();
+    getPerParcelDeliveryAmount();
+    getRiderPreviousEarnings();
+  }
+
+  getRiderPreviousEarnings()
+  {
+    FirebaseFirestore.instance
+        .collection("deliverers")
+        .doc(sharedPreferences!.getString("uid"))
+        .get().then((snap)
+    {
+      previousRiderEarnings = snap.data()!["earnings"].toString();
+    });
+  }
+
+  getPerParcelDeliveryAmount()
+  {
+    FirebaseFirestore.instance
+        .collection("perDelivery")
+        .doc("0aee5geAc959IRBccsSP")
+        .get().then((snap)
+    {
+      perParcelDeliveryAmount = snap.data()!["amount"].toString();
+    });
   }
 
   @override

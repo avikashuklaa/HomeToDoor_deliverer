@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hometodoor_deliverer/assistantMethods/get_current_location.dart';
 
+import '../assistantMethods/get_current_location.dart';
 import '../global/global.dart';
 import '../mainScreens/parcel_picking_screen.dart';
 import '../models/address.dart';
@@ -18,7 +18,8 @@ class ShipmentAddressDesign extends StatelessWidget
 
   ShipmentAddressDesign({this.model, this.orderStatus, this.orderId, this.sellerId, this.orderByUser});
 
-  confirmedParcelShipment(BuildContext context, String getOrderID, String sellerId, String purchaserId) {
+  confirmedParcelShipment(BuildContext context, String getOrderID, String sellerId, String purchaserId)
+  {
     FirebaseFirestore.instance
         .collection("orders")
         .doc(getOrderID)
@@ -31,6 +32,7 @@ class ShipmentAddressDesign extends StatelessWidget
       "address": completeAddress,
     });
 
+    //send rider to shipmentScreen
     Navigator.push(context, MaterialPageRoute(builder: (context) => ParcelPickingScreen(
       purchaserId: purchaserId,
       purchaserAddress: model!.fullAddress,
@@ -40,8 +42,6 @@ class ShipmentAddressDesign extends StatelessWidget
       getOrderID: getOrderID,
     )));
   }
-
-
 
   @override
   Widget build(BuildContext context)
@@ -98,7 +98,7 @@ class ShipmentAddressDesign extends StatelessWidget
 
         orderStatus == "ended"
             ? Container()
-            :  Padding(
+            : Padding(
           padding: const EdgeInsets.all(10.0),
           child: Center(
             child: InkWell(
@@ -108,7 +108,6 @@ class ShipmentAddressDesign extends StatelessWidget
                 uLocation.getCurrentLocation();
 
                 confirmedParcelShipment(context, orderId!, sellerId!, orderByUser!);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ParcelPickingScreen()));
               },
               child: Container(
                 decoration: const BoxDecoration(
@@ -127,7 +126,7 @@ class ShipmentAddressDesign extends StatelessWidget
                 height: 50,
                 child: const Center(
                   child: Text(
-                    "Confirm to deliver",
+                    "Confirm to deliver this parcel",
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
@@ -135,7 +134,6 @@ class ShipmentAddressDesign extends StatelessWidget
             ),
           ),
         ),
-
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Center(
@@ -169,10 +167,6 @@ class ShipmentAddressDesign extends StatelessWidget
             ),
           ),
         ),
-
-        SizedBox(height: 20,),
-
-
       ],
     );
   }
