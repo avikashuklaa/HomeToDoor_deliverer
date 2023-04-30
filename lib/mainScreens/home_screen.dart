@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hometodoor_deliverer/mainScreens/earnings_screen.dart';
+import 'package:hometodoor_deliverer/mainScreens/history_screen.dart';
 import 'package:hometodoor_deliverer/mainScreens/not_yet_delivered_screen.dart';
 import 'package:hometodoor_deliverer/mainScreens/parcel_in_progress_screen.dart';
 
@@ -74,11 +76,13 @@ class _HomeScreenState extends State<HomeScreen>
             if(index == 3)
             {
               //History
+              Navigator.push(context, MaterialPageRoute(builder: (c)=> HistoryScreen()));
 
             }
             if(index == 4)
             {
               //Total Earnings
+              Navigator.push(context, MaterialPageRoute(builder: (c)=> EarningsScreen()));
 
             }
             if(index == 5)

@@ -85,7 +85,7 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen>
         .then((snap)
     {
       orderTotalAmount = snap.data()!["totalAmount"].toString();
-      widget.sellerId = snap.data()!["sellerUID"].toString();
+      widget.sellerId = snap.data()!["chefUID"].toString();
     }).then((value)
     {
       getSellerData();
