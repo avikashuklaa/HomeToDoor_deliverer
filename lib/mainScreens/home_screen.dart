@@ -25,15 +25,15 @@ class _HomeScreenState extends State<HomeScreen>
   Card makeDashboardItem(String title, IconData iconData, int index)
   {
     return Card(
-      elevation: 2,
+      elevation: 3,
       margin: const EdgeInsets.all(8),
       child: Container(
         decoration: index == 0 || index == 3 || index == 4
             ? const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color(0xffff99c8),
-                Color(0xff023e8a),
+                Color(0xfff4acb7),
+                Color(0xff2ec4b6),
               ],
               begin:  FractionalOffset(0.0, 0.0),
               end:  FractionalOffset(1.0, 0.0),
@@ -44,8 +44,8 @@ class _HomeScreenState extends State<HomeScreen>
             : const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.redAccent,
-                Colors.amber,
+                Color(0xffffcad4),
+                Color(0xffcbf3f0),
               ],
               begin:  FractionalOffset(0.0, 0.0),
               end:  FractionalOffset(1.0, 0.0),
@@ -163,8 +163,8 @@ class _HomeScreenState extends State<HomeScreen>
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color(0xffff99c8),
-                Color(0xff023e8a),
+                Color(0xff2ec4b6),
+                Color(0xff2ec4b6),
               ],
               begin: const FractionalOffset(0.0, 0.0),
               end: const FractionalOffset(1.0, 0.0),
@@ -178,7 +178,7 @@ class _HomeScreenState extends State<HomeScreen>
           sharedPreferences!.getString("name")!,
           style: const TextStyle(
             fontSize: 25.0,
-            color: Colors.black,
+            color: Colors.white,
             fontFamily: "Signatra",
             letterSpacing: 2,
           ),

@@ -199,7 +199,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: imageXFile==null ? Icon(
                     Icons.add_photo_alternate,
                     size: MediaQuery.of(context).size.width * 0.20,
-                    color: Colors.grey,
+                    color: Color(0xff83c5be),
                   ) : null ,
                 )
               ),
@@ -262,13 +262,13 @@ class _SignupScreenState extends State<SignupScreen> {
                           label: Text(
                             "Use my current location",
                             style: TextStyle(
-                              color: Color(0xffffffff),
+                              color: Color(0xff006d77),
                               fontSize: 15,
                             ),
                           ),
                         icon: const Icon(
                           Icons.location_on,
-                          color: Color(0xfffefae0),
+                          color: Color(0xff073b4c),
                         ),
                         style: TextButton.styleFrom(
                           primary: Colors.white54,
@@ -292,7 +292,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xffffcad4),
+                  primary: Color(0xff2ec4b6),
                 ),
                   
               ),
